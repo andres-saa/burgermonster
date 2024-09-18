@@ -91,7 +91,7 @@
                         style=" position: absolute; top: 0; left: 0; width: 100%; height: 100%; display:flex; padding: ; align-items: end;border-radius: 0.5rem; ">
                         <p v-if="currenNeigborhood?.site_id" class="col-12 py-1"
                             style="background-color: black; text-align: center; height: min-content;  width: 100%;  font-weight: 500; background-color: rgba(0, 0, 0, 0.7);">
-                            <span  class="text-xl lg:text-lg p-0" style=""> SALCHIMONSTER</span> <span
+                            <span  class="text-xl lg:text-lg p-0" style=""> BURGERMONSTER</span> <span
                                 style="text-transform: uppercase;" class="text-xl lg:text-lg p-0">{{
                                     currentSite?.site_name }}</span>
                         </p>

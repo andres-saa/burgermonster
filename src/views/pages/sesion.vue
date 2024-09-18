@@ -2,63 +2,93 @@
 
 
 
+    <div style="margin-top: 3rem;">
+  
+  
+      <div style="position: relative;display: flex;justify-content: center; align-items: center;"
+        class="text-center text-6xl col-12 mb-8 ">
+  
+  
+  <!-- 
+        <div
+          style="position: absolute;left: -5rem;right: 0;top: -3rem; filter: brightness(.8) blur(20px);mix-blend-mode: screen; opacity: .5;background: linear-gradient(to right, #ffcf00, red); width: 190vw;height: 150vh;z-index: -1;border-radius: .4rem; object-fit: cover;"
+          src="" alt=""> </div>
+   -->
+  
+  
+  
+        <h2 class="m-0  text-4xl md:text-7xl" style="text-shadow: 0 0 2rem red;">
+          <i class="fa-solid fa-burger text-red pr-3" style="background: linear-gradient(#ffcf00, red);
+      -webkit-background-clip: text;
+              background-clip: text;
+      -webkit-text-fill-color: transparent;"></i>
+          <b class="text-white" >
+            {{ route.params.menu_name }}
+          </b>
 
-<div class="grid px-3 pb-8" style="max-width: 1024px;margin: auto; position:relative" >
-
-
-
-   
-
-
-
-
-
-
-
-
-
-    
-<!-- <div  style="position:absolute;display:flex;right:100%;gap:10rem; height:100vh;max-width:100%; justify-content:space-around; flex-direction:column;z-index: 9;">
-
-<img style="width:15vw;" v-for="character in [1,2,3,4,5]" :src="`/images/characters/line/${character}.png`" alt="">
-
-</div> -->
-
-<!-- 
-<div  style="position:absolute;display:flex;left:100%;gap:10rem; height:100vh;max-width:100%; justify-content:space-around; flex-direction:column;z-index: 9;">
-
-<img style="width:15vw;" v-for="character in [1,2,3,4,5].reverse()" :src="`/images/characters/line/${character}.png`" alt="">
-
-</div> -->
-    
-<p class="text-center text-3xl col-12" style="font-weight: bold;display: flex;gap: 1rem;align-items: center;">
-  <div style="width: 100%;height: 5px; background-color: #ff6200">
-
+          <i class="fa-solid fa-burger text-red pl-3" style="background: linear-gradient(#ffcf00, red);
+      -webkit-background-clip: text;
+              background-clip: text;
+      -webkit-text-fill-color: transparent;"></i>
+  
+        </h2>
+  
+  
+  
+      </div>
+  
+  
+  
+      <div class="grid px-3 pb-8" style="max-width: 1024px;margin: auto; position:relative;">
+  
+  
+  
+        <!-- <Dialog class="p-0 m-0"  v-model:visible="store.visible.show_new_product" modal style="width: 30rem;padding: 0;"> 
+  <div style="max-width: 30rem;background-color: white;color: black;border-radius: .5rem;" class="">
+    <TarjetaMenuDialog :product="{ id: 241,product_id: 118,    site_id: 11,    status: true,    price: 10000,    product_name: 'CHOCOMONSTER',    product_description:' CHOCORRAMO APANADO',    category_id: 14,    category_name: 'NUEVOS'}"> </TarjetaMenuDialog>
   </div>
-  {{ route.params.menu_name }}
-
-    <div style="width: 100%;height: 5px; background-color:#ff6200">
-
-</div>
-    
-</p>
-
-
-    <div v-for="(product, index) in products" :key="product.id" class=" col-12   md:col-6 lg:col-4 ">
-
-            <TarjetaMenu style="width: 100%;" :id="`tarjeta-${index}`" :index="index+1" :product="product"></TarjetaMenu>
+  </Dialog> -->
+  
+  
+  
+  
+        <div
+          style="position:absolute;display:flex;right:100%;gap:10rem; height:100vh;max-width:100%; justify-content:space-around; flex-direction:column;z-index: 9;">
+  
+          <!-- <img style="width:15vw;" v-for="character in [1,2,3,4,5]" :src="`/images/characters/line/${character}.png`" alt=""> -->
+  
+        </div>
+  
+  
+  
+  
+  
+  
+        <div v-for="(product, index) in products" :key="product.id" class=" col-12  md:col-6 lg:col-4  xl:col-3">
+  
+          <TarjetaMenu style="width: 100%;" :id="`tarjeta-${index}`" :index="index + 1" :product="product"></TarjetaMenu>
+          
+        </div>
+  
+        
+  
+       
+  
+  
+  
+  
+  
+  
+      </div>
+  
+  
+  
     </div>
-
-
-
-</div>
-
-
-
-
-
-
-</template>
+  
+  
+  
+  
+  </template>
 
 <script setup>
 import TarjetaMenu from '@/components/TarjetaMenu.vue';
@@ -100,7 +130,7 @@ const getProducts = async (category_name) => {
     if(category_id && site_id){
         store.setLoading(true, 'cargando productos')
         try {
-        let response = await fetch(`${URI}/products-active/category-id/${category_id}/site/${site_id}`);
+        let response = await fetch(`${URI}/products-active/category-id/${category_id}/site/${site_id}/2`);
         if (!response.ok) {
             store.setLoading(false, 'cargando productos')
 

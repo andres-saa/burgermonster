@@ -15,7 +15,7 @@
         <img  v-show="loaded" @load="see" :class="loaded? 'cargado': 'sin-cargar'" style="width: 100%; aspect-ratio: 1 / 1 ; border-radius: 1rem; background-color: rgba(255, 255, 255,.2);object-fit: contain; border-radius: 0.5rem;" :src="`https://backend.salchimonster.com/read-product-image/300/${props.product.product_name}`" alt="" >
     </transition>
     
-        <div v-if="!loaded" style="width: 100%;display: flex;justify-content: center; align-items: center; aspect-ratio: 1 / 1; background-color: rgb(255, 255, 255);object-fit: contain; border-radius: 0.5rem;">
+        <div v-if="!loaded" style="width: 100%;display: flex;justify-content: center; align-items: center; aspect-ratio: 1 / 1; background-color: rgba(255, 255, 255,.2);object-fit: contain; border-radius: 0.5rem;">
         
             <ProgressSpinner   style="width: 60px; height: 60px" strokeWidth="8" 
             animationDuration=".2s" aria-label="Custom ProgressSpinner" />
@@ -29,7 +29,7 @@
 
             <div style="display: flex; justify-content: space-between; align-items: center;">
                 <span>
-                <b style="text-transform: uppercase;">
+                <b style="text-transform: uppercase;color: white;">
                     {{props.product.product_name}}
                 </b>
             </span>
@@ -51,7 +51,7 @@
                 
           
                 <div style="display: flex; align-items: center;gap: 1rem;">
-                    <h3 class="m-0"><b>{{formatoPesosColombianos(props.product.price)  }}</b> </h3>
+                    <h3 style="color: white" class="m-0"><b>{{formatoPesosColombianos(props.product.price)  }}</b> </h3>
                     
          
                 </div>
@@ -60,7 +60,7 @@
             </div>
 
             
-            <Button  style="font-weight: bold;width: 100%;" @click="addToCart(props.product)" severity="danger"  label="Agregar al carrito"  icon="pi pi-shopping-cart text-xl fw-100"/>
+            <Button  style="font-weight: bold;width: 100%;border: none; background: linear-gradient(to right, #ff7200, red)" @click="addToCart(props.product)" severity="danger"  label="Agregar al carrito"  icon="pi pi-shopping-cart text-xl fw-100"/>
 
 
         </div>
@@ -211,7 +211,7 @@ const imagenError = (Event) => {
 
 /* Responsive adjustments */
 *{
-    color:white
+    color:rgba(255, 255, 255, 0.837)
 }
 
 .imagen img {

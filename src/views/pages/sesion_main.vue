@@ -9,24 +9,21 @@
       class="text-center text-6xl col-12 mb-8 ">
 
 
+ <h2 class="m-0  text-4xl md:text-7xl" style="text-shadow: 0 0 2rem red;">
+          <i class="fa-solid fa-burger text-red pr-3" style="background: linear-gradient(#ffcf00, red);
+      -webkit-background-clip: text;
+              background-clip: text;
+      -webkit-text-fill-color: transparent;"></i>
+          <b class="text-white" >
+            {{ category[0]?.category_name }}
+          </b>
 
-      <img
-        style="position: absolute;left: -3rem;right: 0;filter: brightness(.8) blur(200px); width: 100vw;height: 10rem;z-index: -1;border-radius: .4rem; object-fit: cover;"
-        src="https://joyfoodsunshine.com/wp-content/uploads/2022/10/best-hamburger-recipe-11.jpg" alt="">
-
-
-
-
-      <h2 class="m-0  text-5xl md:text-7xl" style="">
-        <i class="fa-solid fa-burger text-red" style="background: linear-gradient(#ffcf00, red);
-    -webkit-background-clip: text;
-            background-clip: text;
-    -webkit-text-fill-color: transparent;"></i>
-        <b class="text-white" style="text-shadow: 0 0 .2rem red;">
-          BURGERS
-        </b>
-
-      </h2>
+          <i class="fa-solid fa-burger text-red pl-3" style="background: linear-gradient(#ffcf00, red);
+      -webkit-background-clip: text;
+              background-clip: text;
+      -webkit-text-fill-color: transparent;"></i>
+  
+        </h2>
 
 
 
@@ -59,7 +56,7 @@
 
 
 
-      <div v-for="(product, index) in products" :key="product.id" class=" col-12  md:col-6 lg:col-4 ">
+      <div v-for="(product, index) in products" :key="product.id" class=" col-12  md:col-6 lg:col-4 xl:col-3 ">
 
         <TarjetaMenu style="width: 100%;" :id="`tarjeta-${index}`" :index="index + 1" :product="product"></TarjetaMenu>
         
@@ -104,11 +101,6 @@ const route = useRoute(); // Usando useRoute para acceder a los parámetros de l
 
 
 
-onMounted(async () => {
-  getProducts();
-  await nextTick();
-});
-
 watch(() => route.params.category_id, async () => {
   if (route.params.category_id) {
     getProducts();
@@ -117,14 +109,15 @@ watch(() => route.params.category_id, async () => {
 }, { deep: true });
 
 
+const category = ref([])
 
 const getProducts = async (category_name) => {
   const site_id = siteStore.location.site.site_id
-  const category_id = 4
+  const category_id = category.value[0].category_id
   if (category_id && site_id) {
     store.setLoading(true, 'cargando productos')
     try {
-      let response = await fetch(`${URI}/products-active/category-id/${category_id}/site/${site_id}`);
+      let response = await fetch(`${URI}/products-active/category-id/${category_id}/site/${site_id}/2`);
       if (!response.ok) {
         store.setLoading(false, 'cargando productos')
 
@@ -145,6 +138,29 @@ const getProducts = async (category_name) => {
 
 
 
+const get_main_category = async () => {
+  const site_id = siteStore.location.site.site_id
+  const restaurant_id= 2
+  if (site_id) {
+    store.setLoading(true, 'cargando productos')
+    try {
+      let response = await fetch(`${URI}/categories_main/${site_id}/${restaurant_id}`);
+      if (!response.ok) {
+        store.setLoading(false, 'cargando productos')
+
+        throw new Error(`HTTP error! status: ${response.status}`);
+
+      }
+      store.setLoading(false, 'cargando productos')
+
+      let data = await response.json();
+      category.value = data;
+    } catch (error) {
+      store.setLoading(false, 'cargando productos')
+      console.error('Error fetching data: ', error);
+    }
+  }
+}
 
 
 
@@ -177,6 +193,13 @@ const getProductBy_id = async (category_name) => {
 
 
 
+
+onMounted(async () => {
+  // alert('mainw')
+  await get_main_category()
+  await getProducts();
+  await nextTick();
+});
 
 
 

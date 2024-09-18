@@ -84,7 +84,11 @@ const isOutsideClicked = (event) => {
 </script>
 
 <template>
-    <div class="layout-wrapper col-12 " id="containerRef" :class="containerClass" style="background: url('https://wallpapers.com/images/hd/dark-color-background-biwi0y135j2rqlky.jpg'); ">
+    <div class="layout-wrapper col-12 " id="containerRef" :class="containerClass" >
+        <div style="background: url('/images/bg.jpg');position: fixed;width: 100vw;height: 100vh; ">
+            
+
+        </div>
         <div class="col-12"
             style=" height: 150vh;top: -1rem; position: fixed; background-color: red; z-index:9999; left: 100%;box-shadow: 0 0 30px rgba(0, 0, 0, 0.585);">
         </div>
