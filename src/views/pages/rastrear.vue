@@ -2,7 +2,7 @@
 
 
 
-<div class="mb-6" style="background-color;position: sticky; top:4rem;z-index: 9999;z-index: 9999;">
+<div class="mb-6 mt-8" style="background-color;;z-index: 9999;z-index: 9999;">
     <div class="col-12 m-auto" style="max-width: 1024px;">
 
 <p class="text-4xl text-center py-4  " style="font-weight: bold;color: white;">    <h2 class="m-0" style="font-weight: bold;color: white;">
@@ -15,7 +15,7 @@
 
 
   <div style="display:  flex; justify-content: space-between;width: 100%;gap: 1rem;">
-    <InputText v-model="order_id"  class=" px-2" style="width: 100%;background-color: #ffffff30;border: none;color: white; " placeholder="Numero de pedido"></InputText>
+    <InputText v-model="order_id"  class=" px-2" style="width: 100%;background-color: #ffffff;border: none;color: white; " placeholder="Numero de pedido"></InputText>
     <Button  label="Buscar" class="px-4" style="background-color: var(--primary-color); font-weight: bold;min-width: max-content; border: none;" @click="getOrder()"></Button>
   </div>
 
@@ -67,6 +67,10 @@
  
  </div>
 </div>
+
+
+
+<Sesion_main></Sesion_main>
 
 
 </div>
