@@ -2,7 +2,18 @@
 
 
     <div class="col-12  my-8 md:my-8 p-0" v-if="store.cart.products.length > 0">
-        <P class="text-center text-2xl md:text-5xl my-8 text-white"><b>CARRITO DE COMPRAS</b> </P>
+        <P class="text-center text-2xl md:text-5xl my-8 text-white"><b>
+ <h2 class="m-0  text-4xl md:text-7xl" style="text-shadow: 0 0 2rem red;">
+          <i class="fa-solid fa-shopping-cart text-red pr-3" style="background: linear-gradient(#ffcf00, red);
+      -webkit-background-clip: text;
+              background-clip: text;
+      -webkit-text-fill-color: transparent;"></i>
+          <b class="text-white" >
+            CARRITO DE COMPRAS
+          </b>
+
+  
+        </h2></b> </P>
 
         <div class="grid mx-auto " style="max-width:800px;">
 

@@ -1,6 +1,16 @@
 <template>
     <div class="col-12 px-2 my-8  p-0" style="margin-top: 6rem;">
-      <P class="text-center text-2xl my-8"><b>FINALIZAR COMPRA</b> </P>
+      <P class="text-center text-2xl my-8"><b><h2 class="m-0  text-4xl md:text-7xl" style="text-shadow: 0 0 2rem red;">
+          <i class="fa-solid fa-ticket text-red pr-3" style="background: linear-gradient(#ffcf00, red);
+      -webkit-background-clip: text;
+              background-clip: text;
+      -webkit-text-fill-color: transparent;"></i>
+          <b class="text-white" >
+            FINALIZAR COMPRA
+          </b>
+
+  
+        </h2></b> </P>
         <div class="grid mx-auto " style="max-width:800px;">
 
 
@@ -28,7 +38,7 @@
 
 <div class="flex flex-wrap align-items-center mb-2 gap-2" style="width: 100%;">
     <!-- <label for="username" class="p-sr-only">Username</label> -->
-    <p>El telefono debe estar disponible en WhatsApp para validar el pedido <img style="width: 1.5rem;" src="/images/WhatsApp.svg.webp" alt=""></p> 
+    <p class="text-white">El telefono debe estar disponible en WhatsApp para validar el pedido <img style="width: 1.5rem;" src="/images/WhatsApp.svg.webp" alt=""></p> 
     <InputMask v-model="user.user.phone_number" style="width: 100%;" prefix="+57" id="basic"  mask="999 999 9999" placeholder="TELEFONO" />
 </div>
 

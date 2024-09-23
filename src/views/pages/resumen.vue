@@ -110,7 +110,7 @@
 
 
 
-            <router-link to="/POLLO/12" v-if="route.path.includes('cart')">
+            <router-link to="/" v-if="route.path.includes('cart')">
                 <Button outlined icon="pi pi-shopping-cart" label="Seguir comprando" class="mt-4" severity="danger"
                     style="outline: none;width: 100%;color: white; font-weight: bold; background-color: #ffffff40"></Button>
 
@@ -118,7 +118,7 @@
 
             <router-link to="/cart" v-else>
                 <Button outlined icon="pi pi-arrow-left" label="Volver al carrito" class="mt-4" severity="danger"
-                    style="outline: none;width: 100%;font-weight: bold; background-color: rgba(0, 0, 0, 0);"></Button>
+                style="outline: none;width: 100%;color: white; font-weight: bold; background-color: #ffffff40"></Button>
 
             </router-link>
 
