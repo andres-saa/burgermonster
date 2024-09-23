@@ -3,11 +3,8 @@
 
     <div class="col-12  my-8 md:my-8 p-0" v-if="store.cart.products.length > 0">
         <P class="text-center text-2xl md:text-5xl my-8 text-white"><b>
- <h2 class="m-0  text-4xl md:text-7xl" style="text-shadow: 0 0 2rem red;">
-          <i class="fa-solid fa-shopping-cart text-red pr-3" style="background: linear-gradient(#ffcf00, red);
-      -webkit-background-clip: text;
-              background-clip: text;
-      -webkit-text-fill-color: transparent;"></i>
+ <h2 class="m-0  text-4xl md:text-7xl" >
+     
           <b class="text-white" >
             CARRITO DE COMPRAS
           </b>
@@ -22,7 +19,7 @@
             <div class="col-12 text-sm md:col-6 p-3 md:px-4" style="display: flex;background-color: ; flex-direction: column; gap:1rem;justify-content: center;">
 
                 <div class=" col-12 py-3 p-shadow"
-                    style=" display: flex;align-items:end;background-color: #ffffff30; position: relative; gap:1rem;border-radius: 0.3rem;"
+                    style=" display: flex;align-items:end;background-color: #ffffff; position: relative; gap:1rem;border-radius: 0.3rem;"
                     v-for="product in store.cart.products">
 
                     <img style="width:5rem;object-fit:cover; height:5rem"
@@ -474,7 +471,7 @@ button:hover {
 
 * {
     text-transform: capitalize;
-    color:white
+    color:rgb(0, 0, 0)
 }
 
 *::first-letter {

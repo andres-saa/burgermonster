@@ -271,7 +271,7 @@ const fondoVisible = ref(false)
 
 <template>
     <div v-if="!isInAdminProductsRoute && !isEntregasRoute" st class="layout-topbar shadow-3 px-3 md:pl-5 md:pr-5 lg:pl-7 lg:pr-7 "
-        style=" z-index:999;background: linear-gradient(to right, #ff6200, red);">
+        style=" z-index:999;background: linear-gradient(to right,  #f9ac10, red);">
 
 
         <router-link to="/" class="layout-topbar-logo" style="z-index: 99999;">

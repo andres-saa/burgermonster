@@ -85,7 +85,7 @@ const isOutsideClicked = (event) => {
 
 <template>
     <div class="layout-wrapper col-12 " id="containerRef" :class="containerClass" >
-        <div style="background: linear-gradient(to right, #ff6200, red);position: fixed;background-size: cover;background-position: center; width: 100vw;height: 100vh; ">
+        <div style="background: linear-gradient(to right, #f9ac10, red);position: fixed;background-size: cover;background-position: center; width: 100vw;height: 100vh; ">
             
 
         </div>
