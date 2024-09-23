@@ -9,21 +9,16 @@
       class="text-center text-6xl col-12 mb-8 ">
 
 
- <h2 class="m-0  text-4xl md:text-7xl" style="text-shadow: 0 0 2rem red;">
-          <i class="fa-solid fa-burger text-red pr-3" style="background: linear-gradient(#ffcf00, red);
-      -webkit-background-clip: text;
-              background-clip: text;
-      -webkit-text-fill-color: transparent;"></i>
-          <b class="text-white" >
-            {{ category[0]?.category_name }}
-          </b>
 
-          <i class="fa-solid fa-burger text-red pl-3" style="background: linear-gradient(#ffcf00, red);
-      -webkit-background-clip: text;
-              background-clip: text;
-      -webkit-text-fill-color: transparent;"></i>
-  
-        </h2>
+        <h2 class="m-0  text-4xl md:text-7xl" >
+       
+       <b class="text-white" >
+        {{ category[0]?.category_name }}
+       </b>
+
+   
+
+     </h2>
 
 
 

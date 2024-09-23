@@ -1,7 +1,7 @@
 <template>
  
 
-    <div  class="container shadow-3 col-12"   style="border-radius: 0.5rem; background-color: #ffffff30; height: 100%;position: relative;box-shadow: ;">
+    <div  class="container shadow-3 col-12"   style="border-radius: 0.5rem; background-color: #ffffff; height: 100%;position: relative;box-shadow: ;">
     
         
 
@@ -29,7 +29,7 @@
 
             <div style="display: flex; justify-content: space-between; align-items: center;">
                 <span>
-                <b style="text-transform: uppercase;color: white;">
+                <b style="text-transform: uppercase;">
                     {{props.product.product_name}}
                 </b>
             </span>
@@ -60,7 +60,7 @@
             </div>
 
             
-            <Button  style="font-weight: bold;width: 100%;border: none; background: linear-gradient(to right, #ff7200, red)" @click="addToCart(props.product)" severity="danger"  label="Agregar al carrito"  icon="pi pi-shopping-cart text-xl fw-100"/>
+            <Button  style="font-weight: bold;width: 100%;border: none; background: linear-gradient(to right, red, red)" @click="addToCart(props.product)" severity="danger"  label="Agregar al carrito"  icon="pi pi-shopping-cart text-xl fw-100"/>
 
 
         </div>
@@ -211,7 +211,7 @@ const imagenError = (Event) => {
 
 /* Responsive adjustments */
 *{
-    color:rgba(255, 255, 255, 0.837)
+    color:rgba(0, 0, 0, 0.837)
 }
 
 .imagen img {

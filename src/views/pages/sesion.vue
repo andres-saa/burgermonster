@@ -17,19 +17,12 @@
   
   
   
-        <h2 class="m-0  text-4xl md:text-7xl" style="text-shadow: 0 0 2rem red;">
-          <i class="fa-solid fa-burger text-red pr-3" style="background: linear-gradient(#ffcf00, red);
-      -webkit-background-clip: text;
-              background-clip: text;
-      -webkit-text-fill-color: transparent;"></i>
+        <h2 class="m-0  text-4xl md:text-7xl" >
+       
           <b class="text-white" >
             {{ route.params.menu_name }}
           </b>
 
-          <i class="fa-solid fa-burger text-red pl-3" style="background: linear-gradient(#ffcf00, red);
-      -webkit-background-clip: text;
-              background-clip: text;
-      -webkit-text-fill-color: transparent;"></i>
   
         </h2>
   

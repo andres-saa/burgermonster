@@ -28,7 +28,7 @@ class="col-12 py-0 px-4 background"   style="display: flex;position: fixed; bott
   height: 3.5rem;
   /* padding: 1rem; */
 /* padding: 1rem;  */
-  background-color: rgba(255, 255, 255,.9 ); 
+  background-color: rgba(255, 255, 255,1 ); 
   
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);">
  
@@ -117,10 +117,10 @@ class="col-12 py-0 px-4 background"   style="display: flex;position: fixed; bott
   </div>
 
 
-  <div v-if="!route.path.includes('cart') && !route.path.includes('pay')" class="whatsapp"  :style="!showElement? 'transform: translateX(-3rem)': ''"  style="">
+  <div v-if="!route.path.includes('cart') && !route.path.includes('pay')" class="whatsapp p-1"  :style="!showElement? 'transform: translateX(-3rem)': ''"  style="background-color: white;">
  
 
-    <a href="https://wa.link/5mq1t0">  <button class="whatsapp-btn p-1" style="
+    <a href="https://wa.link/5mq1t0">  <button class="whatsapp-btn p-" style="
                              border: none; background-color:transparent; 
                              transition: all ease .3s;
                              /* border-radius: 50%;  */
@@ -544,7 +544,7 @@ const enviarAlCarro = ()=> {
 .whatsapp {
     /* background-color: red; */
     /* min-width: 1024px; */
-    width: 4rem;
+    width: min-content;
     height: min-content;
     gap: .3rem;
     display: flex;
@@ -553,7 +553,7 @@ const enviarAlCarro = ()=> {
     transition: all ease .3s;
     left: 0rem;
     bottom: 9rem;
-    padding:  0rem 0;
+    padding:  1rem;
     color: black;
 
     /* align-items: center; */
