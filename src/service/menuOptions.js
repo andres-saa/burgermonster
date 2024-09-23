@@ -158,11 +158,11 @@ const menuOptions = ref(
         //     to:'sedes',
           
         // },
-        // {
-        //     name: 'CARTA',
+        {
+            name: 'CARTA',
         
-        //     to:'menu'
-        // },
+            to:'menu'
+        },
 
         {
             name: 'RASTREAR PEDIDO',

@@ -1,14 +1,14 @@
 <template>
-    <Dialog v-model:visible="store.visibles.currentSite"
-        :style="{ width: '380px' }" header="Seleccion de sede" :modal="true" class="p-fluid m-3"
+    <Dialog v-model:visible="store.visibles.currentSite" :style="{ width: '380px' }" header="Seleccion de sede"
+        :modal="true" class="p-fluid m-3"
         style=" background-color: white;position: relative; border-radius: 1rem;padding-top: 2rem;">
 
 
 
 
-       <b style="color:black">
-        <!-- {{ store.location }} -->
-       </b>
+        <b style="color:black">
+            <!-- {{ store.location }} -->
+        </b>
 
         <!-- <div class="notch"
             style="display: flex; align-items: center; width: 30%; background-color: black; border-radius: 0 0 1rem 1rem; height: 2rem; position: absolute; top: 0rem; left: 35%;">
@@ -24,76 +24,84 @@
 
             <!-- <img style="width: 50px;" src="http://localhost:5173/src/images/logo.png" alt=""> -->
 
-    
-            <div class="field col-12 pb-0 p-0" style="width: 100%;">
-                <div style="display: flex; ;width: min-content; justify-content:start;gap: 1rem;align-items: center;"> 
-                <label for="site_id" style="color: black; min-width: max-content;">en que ciudad te encuentras?   </label> 
-                
-                <ProgressSpinner v-if="spinnersView.ciudad" style="width: 20px; height: 20px" strokeWidth="8" fill="var(--white)"
-                
-    animationDuration=".5s" aria-label="Custom ProgressSpinner" /> 
 
-</div>
+            <div class="field col-12 pb-0 p-0" style="width: 100%;">
+                <div style="display: flex; ;width: min-content; justify-content:start;gap: 1rem;align-items: center;">
+                    <label for="site_id" style="color: black; min-width: max-content;">en que ciudad te encuentras?
+                    </label>
+
+                    <ProgressSpinner v-if="spinnersView.ciudad" style="width: 20px; height: 20px" strokeWidth="8"
+                        fill="var(--white)" animationDuration=".5s" aria-label="Custom ProgressSpinner" />
+
+                </div>
                 <Dropdown class="" @click="() => currenNeigborhood = {
                     site: {
                         site_name: 'default'
-                    }   
-                }" v-model="currenCity" :options="cities" placeholder="SELECCIONA UNA CIUDAD" optionLabel="city_name" required="true" />
+                    }
+                }" v-model="currenCity" :options="cities" placeholder="SELECCIONA UNA CIUDAD" optionLabel="city_name"
+                    required="true" />
 
             </div>
-     
+
 
             <div class="field col-12 mt-0 pt-0 p-0" style="width: 100%;gap: ; display: block;">
-                <div style="display: flex;width: min-content; justify-content:start;gap: 1rem;align-items: center;"> 
-                <label for="site_id" style="color: black;min-width: max-content;">Cual es tu barrio?   </label> 
-                
-                
-                <div v-if="spinnersView.barrio" style="display: flex; min-width: max-content;">
-                    <ProgressSpinner  style="width: 20px;  height: 20px" strokeWidth="8" fill="var(--white)"
-                
-                animationDuration=".5s" aria-label="Custom ProgressSpinner" /> 
-                
-                <p class="pl-2" style="color: black;">buscando barrios...</p>
-                </div>  
-                
-                
+                <div style="display: flex;width: min-content; justify-content:start;gap: 1rem;align-items: center;">
+                    <label for="site_id" style="color: black;min-width: max-content;">Cual es tu barrio? </label>
 
-</div>
- 
+
+                    <div v-if="spinnersView.barrio" style="display: flex; min-width: max-content;">
+                        <ProgressSpinner style="width: 20px;  height: 20px" strokeWidth="8" fill="var(--white)"
+                            animationDuration=".5s" aria-label="Custom ProgressSpinner" />
+
+                        <p class="pl-2" style="color: black;">buscando barrios...</p>
+                    </div>
+
+
+
+                </div>
+
                 <Dropdown style="" filter v-model="currenNeigborhood" :disabled="!possibleNeigborhoods"
-          :options="possibleNeigborhoods" optionLabel="name" required="true"
-          placeholder="Selecciona un barrio" filterPlaceholder="Escribe el nombre de tu barrio" />
+                    :options="possibleNeigborhoods" optionLabel="name" required="true"
+                    placeholder="Selecciona un barrio" filterPlaceholder="Escribe el nombre de tu barrio" />
 
-          
+
 
                 <!-- <Dropdown v-model="seleFcarrctedCity" editable :options="possibleNeigborhoods"  placeholder="Select a City" class="w-full md:w-14rem" /> -->
 
             </div>
 
-            <div class="field col-12 p-0" style="width: 100%; height:15rem ; position: relative;">
+            <div class="field col-12 p-0" style="width: 100%; height:15rem ; position: relative;overflow: hidden;">
 
 
-                <div class="img-cont col-12 p-0" style="overflow: hidden;position: relative;">
-
-                    
-
-                    
+                <div class="img-cont col-12 p-0" style="overflow: hidden; position: relative;">
 
 
 
-                    <img v-if="currenNeigborhood?.site_id" :src="`${URI}/read-product-image/600/site-${currenNeigborhood?.site_id}`"
+
+
+
+
+                    <img class="pb-5 pt-4" v-if="currenNeigborhood?.site_id" src="/images/LOGO.png"
                         :class="currenNeigborhood.site?.name == 'default' ? 'default-image' : ''"
-                        style="border: 1px solid rgb(255, 255, 255); width: 100%;background-color: rgb(255, 255, 255); height: 100%; object-fit: cover; border-radius: 0.2rem;"
+                        style="background-color: red; width: 100%; height: 100%; object-fit: contain; border-radius: 0.2rem;"
                         alt="">
 
 
                     <div
-                        style=" position: absolute; top: 0; left: 0; width: 100%; height: 100%; display:flex; padding: ; align-items: end;border-radius: 0.5rem; ">
+                        style=" position: absolute; top: 0; left: 0; width: 100%; height: 100%; display:flex; padding: ;overflow: hidden; align-items: end;border-radius: 0.5rem; ">
                         <p v-if="currenNeigborhood?.site_id" class="col-12 py-1"
                             style="background-color: black; text-align: center; height: min-content;  width: 100%;  font-weight: 500; background-color: rgba(0, 0, 0, 0.7);">
-                            <span  class="text-xl lg:text-lg p-0" style=""> BURGERMONSTER</span> <span
-                                style="text-transform: uppercase;" class="text-xl lg:text-lg p-0">{{
-                                    currentSite?.site_name }}</span>
+                            <span class="text-xl lg:text-lg p-0" style=""> </span> <span
+                                style="text-transform: uppercase;" class="text-xl lg:text-lg p-0">
+                                <h2 class="m-0  text-4xl md:text-4xl" style="text-shadow: 0 0 1rem red;">
+
+                                    <b class="text-white" style="text-shadow: 0 0 1rem red;">
+                                        BURGERMONSTER  {{currentSite?.site_name}}
+                                    </b>
+
+
+                                </h2> 
+                            </span>
                         </p>
                     </div>
                 </div>
@@ -107,16 +115,17 @@
 
             <div class="field col-12 p-0" style="width: 100%;  ;">
                 <Button label="Guardar" @click="setNeigborhood" :disabled="!currenNeigborhood?.name"
-                    style="width: max-content;border: none; padding: 10px 20px;width: 100%; text-align: center;background-color: black;" b>
-                    
+                    style="width: max-content;border: none; padding: 10px 20px;width: 100%; text-align: center;background-color: black;"
+                    b>
+
                 </Button>
 
             </div>
 
 
         </div>
- 
-       
+
+
 
 
 
@@ -137,28 +146,28 @@ import { PrimeIcons } from 'primevue/api';
 import { showSiteDialog, setShowDialog } from '@/service/state';
 import { URI } from '@/service/conection'
 // import { cities } from '@/service/citiesService';
-import {sitesService } from '../service/site/sitesService'
-import {useSitesStore} from '../store/site'
+import { sitesService } from '../service/site/sitesService'
+import { useSitesStore } from '../store/site'
 import { usecartStore } from '../store/shoping_cart';
 
 const store = useSitesStore()
 const cart = usecartStore()
 
-watch(() =>  store.location.site.site_id ,() => {
-    
-    cart.cart =  {
-          products: [],
-          total_cost: 0,
-          additions: [],
-    
-}
+watch(() => store.location.site.site_id, () => {
 
-location.reload()
+    cart.cart = {
+        products: [],
+        total_cost: 0,
+        additions: [],
 
-} )
+    }
 
-const spinnersView = ref({ciudad:false, barrio:false})
-const cities = ref([]) 
+    location.reload()
+
+})
+
+const spinnersView = ref({ ciudad: false, barrio: false })
+const cities = ref([])
 const currentSite = ref({})
 const currenCity = ref({})
 const c_neigbor = ref(localStorage.getItem('currentNeigborhood'))
@@ -180,10 +189,10 @@ watch(currenCity, () => { changePossiblesNeigborhoods() })
 
 
 
-watch(currenNeigborhood, async() => { 
-    
-   currentSite.value =  await sitesService.getSiteById(currenNeigborhood.value.site_id).then((data) => currentSite.value = data)
- })
+watch(currenNeigborhood, async () => {
+
+    currentSite.value = await sitesService.getSiteById(currenNeigborhood.value.site_id).then((data) => currentSite.value = data)
+})
 
 
 
@@ -196,37 +205,37 @@ watch(currenNeigborhood, async() => {
 
 
 
-const setNeigborhood = async() => {
+const setNeigborhood = async () => {
 
     const newLocation = {
-        site:currentSite.value,
-        neigborhood:currenNeigborhood.value,
-        city:currenCity.value
+        site: currentSite.value,
+        neigborhood: currenNeigborhood.value,
+        city: currenCity.value
     }
-    
+
     store.setLocation(newLocation)
-    store.setVisible('currentSite',false)
+    store.setVisible('currentSite', false)
     showSiteDialog.value = false
 
 }
 
 
-const getCities = async() => {
+const getCities = async () => {
     try {
-    spinnersView.value.ciudad = true
-     const response = await fetch(`${URI}/cities`)
-     if(response.ok){
-        const data = await response.json()
+        spinnersView.value.ciudad = true
+        const response = await fetch(`${URI}/cities`)
+        if (response.ok) {
+            const data = await response.json()
+            spinnersView.value.ciudad = false
+            // cities.value = data
+            return data
+        }
+
+    } catch (error) {
         spinnersView.value.ciudad = false
-        // cities.value = data
-        return data
-     }
-     
-   } catch (error) {
-    spinnersView.value.ciudad = false
-    
-   }
-   
+
+    }
+
 }
 
 
@@ -239,26 +248,26 @@ const getCities = async() => {
 
 
 
-const getNeighborhoodsByCityId = async(city_Id) => {
+const getNeighborhoodsByCityId = async (city_Id) => {
     try {
         spinnersView.value.barrio = true
-     const response = await fetch(`${URI}/neighborhoods/by-city/${city_Id}`)
-     if(response.ok){
-        const data = await response.json()
-        // cities.value = data
+        const response = await fetch(`${URI}/neighborhoods/by-city/${city_Id}`)
+        if (response.ok) {
+            const data = await response.json()
+            // cities.value = data
+            spinnersView.value.barrio = false
+
+            return data
+        }
+
+    } catch (error) {
         spinnersView.value.barrio = false
 
-        return data
-     }
-     
-   } catch (error) {
-    spinnersView.value.barrio = false
 
-    
-   }
+    }
 }
 
-onMounted(async() => {
+onMounted(async () => {
     getCities().then(data => cities.value = data)
 })
 
@@ -495,7 +504,7 @@ onMounted(async() => {
 
 .ordenar {
     transition: all 0.2s ease;
-    border: 2px solid var(--primary-color);
+    /* border: 2px solid var(--primary-color); */
     /* // font-weight: bold; */
     font-size: 20px;
     /* // margin-bottom: 200px; */
@@ -632,9 +641,11 @@ onMounted(async() => {
 a {
     text-decoration: none;
 }
- *{
+
+* {
     text-transform: uppercase;
- }
+}
+
 .texto {
     /* width: 40%; */
     /* min-width: 200px; */
@@ -723,4 +734,5 @@ dialog {
         width: 10rem;
         /* display: none;  */
     }
-}</style>
+}
+</style>

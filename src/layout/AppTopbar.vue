@@ -276,8 +276,6 @@ const fondoVisible = ref(false)
 
         <router-link to="/" class="layout-topbar-logo" style="z-index: 99999;">
             <img :src="'/images/LOGO.png'" alt="logo" />
-
-
         </router-link>
 
 

@@ -163,7 +163,7 @@
     </div>
 
     <div v-else class="col-12 " style="display: flex;justify-content: center;height: 90vh; align-items: center;">
-        <img style="border-radius: 0;width: 100%; max-width: 500px;" src="/images/empty-cart.jpg" alt="">
+        <img style="border-radius: 0;filter: invert(); mix-blend-mode: multiply; width: 100%; max-width: 500px;" src="/images/empty-cart.jpg" alt="">
     </div>
 
     <dialogAddAditions></dialogAddAditions>
