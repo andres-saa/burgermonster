@@ -9,16 +9,18 @@
         
     
     
-    <div class="imagen" style="display: flex;align-items: center; " @click="open(props.product)">
+    <div class="imagen" style="display: flex;align-items: center;position: relative; " @click="open(props.product)">
   
         <transition name="fade">
-        <img  v-show="loaded" @load="see" :class="loaded? 'cargado': 'sin-cargar'" style="width: 100%; aspect-ratio: 1 / 1 ; border-radius: 1rem; background-color: rgba(255, 255, 255,.2);object-fit: contain; border-radius: 0.5rem;" :src="`https://backend.salchimonster.com/read-product-image/300/${props.product.product_name}`" alt="" >
+        <img  v-show="loaded" @load="see"  style="width: 100%; aspect-ratio: 1 / 1 ; border-radius: 1rem; background-color: rgba(255, 255, 255,.2);object-fit: contain; border-radius: 0.5rem;" :src="`https://backend.salchimonster.com/read-product-image/600/${props.product.product_name}`" alt="" >
     </transition>
     
         <div v-if="!loaded" style="width: 100%;display: flex;justify-content: center; align-items: center; aspect-ratio: 1 / 1; background-color: rgba(255, 255, 255,.2);object-fit: contain; border-radius: 0.5rem;">
         
-            <ProgressSpinner   style="width: 60px; height: 60px" strokeWidth="8" 
-            animationDuration=".2s" aria-label="Custom ProgressSpinner" />
+
+            <img   style="width: 100%; aspect-ratio: 1 / 1 ;filter: blur(2px); position: absolute; border-radius: 1rem; background-color: rgba(255, 255, 255,.2);object-fit: contain; border-radius: 0.5rem;" :src="`https://backend.salchimonster.com/read-product-image/96/${props.product.product_name}`" alt="" >
+
+            
         
         </div>
   
@@ -41,10 +43,27 @@
 
 
             </div>
+
+            <span>
+
+<Tag style="background-color: red; color: white;">
+    <b style="color: white;">
+    {{props.product.gramos}} GRAMOS
+
+</b>
+</Tag>
+
+</span>
+
+
             
             <span>
-                    {{truncatedDescription?.toLocaleLowerCase()}} 
+                   
+                
+                {{truncatedDescription?.toLocaleLowerCase()}} 
             </span>
+
+            
             
             <div style="display: flex;justify-content: end; align-items: center;">
 
@@ -60,7 +79,7 @@
             </div>
 
             
-            <Button  style="font-weight: bold;width: 100%;border: none; background: linear-gradient(to right, red, red)" @click="addToCart(props.product)" severity="danger"  label="Agregar al carrito"  icon="pi pi-shopping-cart text-xl fw-100"/>
+            <Button  style="font-weight: bold;width: 100%;border: none; background: linear-gradient(to right, black, black)" @click="addToCart(props.product)" severity="danger"  label="Agregar al carrito"  icon="pi pi-shopping-cart text-xl fw-100"/>
 
 
         </div>

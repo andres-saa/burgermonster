@@ -44,11 +44,12 @@
 
 
 
+     
       <div class="col-12  p-0 mt-0 shadow-5"
         style="display: flex;align-items: center; max-height: 45rem; background-color:white;border-radius: 0.5rem; ">
 
 
-        <img :class="see? 'cargado': 'sin-cargar'" :onload="seeImage" class="col-12 p-2 m-0" :src="`https://backend.salchimonster.com/read-product-image/600/${store.currentProduct.product_name}`"
+        <img  :onload="seeImage" class="col-12 p-2 m-0" :src="`https://backend.salchimonster.com/read-product-image/600/${store.currentProduct.product_name}`"
           alt="" v-show="see" style="width: 100%;object-fit: contain; aspect-ratio: 1/1;">
 
       </div>
@@ -61,14 +62,19 @@
 
 
         <div style="width: 100%; aspect-ratio: 1 / 1; display: flex; align-items: center; justify-content: center">
-          <ProgressSpinner   style="width: 100px; height: 100px" strokeWidth="5" 
-        animationDuration=".2s" aria-label="Custom ProgressSpinner" />
+          <img  class="col-12 p-2 m-0" :src="`https://backend.salchimonster.com/read-product-image/96/${store.currentProduct.product_name}`"
+           style="width: 100%;object-fit: contain; aspect-ratio: 1/1;">
 
 
 
         </div>
       
       </div>
+
+
+
+
+
 
 
 
@@ -196,7 +202,7 @@ import { carro_para_la_barra_de_abajo } from '@/service/cart';
 // import { useRouter } from 'vue-router';
 import { adiciones } from '@/service/menu/adiciones/adiciones.js'
 import { URI } from '@/service/conection'
-import { useToast } from 'primevue/usetoast';
+// import { useToast } from 'primevue/usetoast';
 import { domicilio, quantity } from '@/service/cart';
 // import { cart } from '@/service/cart';
 // import {vue} from 'vue';imp
@@ -387,7 +393,7 @@ const isSmallScreen = computed(() => screenWidth.value < 768);
 
 
 
-const toast = useToast();
+// const toast = useToast();
 // Escuchar el evento de cambio de tamaño de la ventana
 window.addEventListener('resize', updateScreenWidth);
 
@@ -650,7 +656,7 @@ const addcar = (product) => {
   product_new.acompanantes = currentAcompanantes.value
 
   useCart.add(product_new)
-  toast.add({ severity: 'success', summary: 'Agregado al carrito', detail: productDialog.value.name, life: 3000 });
+  // toast.add({ severity: 'success', summary: 'Agregado al carrito', detail: productDialog.value.name, life: 3000 });
 }
 
 
@@ -754,7 +760,7 @@ const cargarAdiciones = (item, gratis = 0) => {
       checkedAdiciones.value[item.name] = false
       console.log('ya')
 
-      toast.add({ severity: 'error', summary: 'Recuerda', detail: `solo puede elegir ${gratis} acompanantes gratis`, life: 3000 });
+      // toast.add({ severity: 'error', summary: 'Recuerda', detail: `solo puede elegir ${gratis} acompanantes gratis`, life: 3000 });
 
       // Si ya hay dos o más objetos con price < 0, no hacer nada y retornar
       return;
