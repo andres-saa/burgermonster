@@ -12,13 +12,13 @@
     <div class="imagen" style="display: flex;align-items: center;position: relative; " @click="open(props.product)">
   
         <transition name="fade">
-        <img  v-show="loaded" @load="see"  style="width: 100%; aspect-ratio: 1 / 1 ; border-radius: 1rem; background-color: rgba(255, 255, 255,.2);object-fit: contain; border-radius: 0.5rem;" :src="`https://backend.salchimonster.com/read-product-image/600/${props.product.product_name}`" alt="" >
+        <img  v-show="loaded" @load="see"  style="width: 100%; aspect-ratio: 1 / 1 ; border-radius: 1rem; background-color: rgba(255, 255, 255,.2);object-fit: contain; border-radius: 0.5rem;" :src="`https://backend.salchimonster.com/read-photo-product/${props.product.img_identifier}/600`" alt="" >
     </transition>
     
         <div v-if="!loaded" style="width: 100%;display: flex;justify-content: center; align-items: center; aspect-ratio: 1 / 1; background-color: rgba(255, 255, 255,.2);object-fit: contain; border-radius: 0.5rem;">
         
 
-            <img   style="width: 100%; aspect-ratio: 1 / 1 ;filter: blur(2px); position: absolute; border-radius: 1rem; background-color: rgba(255, 255, 255,.2);object-fit: contain; border-radius: 0.5rem;" :src="`https://backend.salchimonster.com/read-product-image/96/${props.product.product_name}`" alt="" >
+            <img   style="width: 100%; aspect-ratio: 1 / 1 ;filter: blur(2px); position: absolute; border-radius: 1rem; background-color: rgba(255, 255, 255,.2);object-fit: contain; border-radius: 0.5rem;" :src="`https://backend.salchimonster.com/read-photo-product/${props.product.img_identifier}/96`" alt="" >
 
             
         
