@@ -70,6 +70,7 @@
                 
           
                 <div style="display: flex; align-items: center;gap: 1rem;">
+                    <h4 v-if="props.product.last_price && props.product.last_price != 0" style="opacity: .7;color: red;text-decoration: line-through; " class="m-0"> {{formatoPesosColombianos(props.product.last_price)  }} </h4>
                     <h3 style="color: white" class="m-0"><b>{{formatoPesosColombianos(props.product.price)  }}</b> </h3>
                     
          
