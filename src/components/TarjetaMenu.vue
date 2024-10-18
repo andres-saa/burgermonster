@@ -26,40 +26,32 @@
   
     </div>
 
-    <div class="texto" style="">
-        <div style="display: flex;gap: 1rem; height: 100%; flex-direction: column;justify-content: space-between;">
+    <div class="texto" style="position: relative;">
+        <div style="display: flex;gap: .4rem; height: 100%; flex-direction: column;justify-content: space-between;">
 
             <div style="display: flex; justify-content: space-between; align-items: center;">
-                <span>
+                <span class="m-0 p-0">
                 <b style="text-transform: uppercase;">
                     {{props.product.product_name}}
                 </b>
             </span>
-            <!-- <Button text style="color: black;" icon="pi pi-ellipsis-v p-0 text-xl" /> -->
-            <!-- <img  class="character" style="width:4rem;"  :src="`/images/characters/${props.index}.png`" alt=""> -->
-
-
-
-
 
             </div>
 
-            <span>
+  
 
-<Tag style="background-color: red; color: white;">
-    <b style="color: white;">
-    {{props.product.gramos}} GRAMOS
+                <Tag v-if="props.product.gramos" style="background-color: red; color: white;position: absolute;top: -2rem;">
+                    <b style="color: white;">
+                    {{props.product.gramos}} GRAMOS
 
-</b>
-</Tag>
+                </b>
+                </Tag>
 
-</span>
+
 
 
             
             <span>
-                   
-                
                 {{truncatedDescription?.toLocaleLowerCase()}} 
             </span>
 
@@ -79,14 +71,15 @@
                 
             </div>
 
-            
-            <Button  style="font-weight: bold;width: 100%;border: none; background: linear-gradient(to right, black, black)" @click="addToCart(props.product)" severity="danger"  label="Agregar al carrito"  icon="pi pi-shopping-cart text-xl fw-100"/>
-
+           
 
         </div>
 
 
     </div>
+     
+    <Button class="p-4"  style="font-weight: bold;position: absolute;aspect-ratio: 1 / 1;border-radius: 50%; right: -1.2rem;top: -1.2rem; border: none; background: linear-gradient(to right, black, black)" @click="addToCart(props.product)" severity="danger"    icon="pi pi-shopping-cart text-xl fw-100"/>
+
 
 
    
