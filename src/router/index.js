@@ -91,12 +91,7 @@ const router = createRouter({
           component: () => import('@/views/pages/cart.vue'),
          
         },
-        {
-          path: '/ingreso-call-center',
-          name: 'ingreso-call-center',
-          component: () => import('@/views/pages/auth/login.vue'),
-        
-        },
+
         {
           path: '/pay',
           name: 'pay',

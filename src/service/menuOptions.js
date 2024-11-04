@@ -175,11 +175,11 @@ const menuOptions = ref(
         //     to:'colaboraciones'
         // },
 
-        // {
-        //     name: 'PQRS',
+        {
+            name: 'PQRS',
            
-        //     to:'pqrs-user'
-        // },
+            to:'pqrs-user'
+        },
         
     ]
 )
