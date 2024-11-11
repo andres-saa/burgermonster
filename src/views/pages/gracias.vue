@@ -381,7 +381,7 @@ onMounted(() => {
 const whatsappUrl = computed(() => {
   const baseUrl = 'https://api.whatsapp.com/send';
   const urlParams = new URLSearchParams({
-    phone: '573053447255',
+    phone: '573332399085',
     text: text.value
   });
   return `${baseUrl}?${urlParams.toString()}`;
