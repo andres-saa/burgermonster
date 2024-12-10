@@ -1,6 +1,6 @@
 <template>
 
-    <div style="position: sticky; top: 3.5rem; z-index: 999; background-color: #fff;overflow-x: auto;" class="col-12 nav_bar shadow-3 d-flex  lg:justify-content-center align-items-center mb-5 p-0 md:p-0">
+    <div style="position: sticky; top: 3.5rem; z-index: 999; background-color:white;overflow-x: auto;" class="col-12 nav_bar shadow-3 d-flex  lg:justify-content-start align-items-center mb-5 p-0 md:p-0">
        
        
         <!-- <Button class="px-0" style="position: absolute;border: none;background-color: white;color: black; left: -0.5rem;z-index: 99;height: 100%;width: 1.7rem; border-radius: 0;" severity="help"  icon="pi pi-angle-left text-2xl"></Button>
@@ -8,15 +8,29 @@
 
         <Button class="px-0" style="position: absolute;border: none;background-color: white;color: black; right: -0.5rem;z-index: 99;height: 100%; width: 1.7rem; border-radius: none;" severity="help"  icon="pi pi-angle-right text-2xl"></Button> -->
 
-        <div class=" d-flex p lg:justify-content-center align-items-center  p-0 m-0"
-        style="gap: 0; ">
+        <div class=" d-flex text-white p lg:justify-content-center align-items-center  p-0 m-0"
+        style="gap: 0;">
 
-        <div v-for="section in categories" :key="section.id" class="p-0">
-            <Button text  size="small" @click="navigateToCategory(section.category_name,section.category_id)" :label="section.category_name "
+        <!-- <div v-for="(section,index) in categories" :key="section.id" class="p-0"  style="display: flex; align-items: center;">
+            <Button    size="small" @click="navigateToCategory(section.category_name,section.category_id)" :label="section.category_name "
                 :class="checkSelected(section.category_id) ? 'selected menu-button' : 'menu-button'"
-                class="p-2 mx-2  text-lg titulo" style=" text-transform: capitalize; width:max-content;background-color: transparent; color:var(--text-color); border-radius: 0;outline: none;box-shadow: none;">
+                class="py-3 px-3 mx-0  text-lg titulo" style=" text-transform: capitalize;width:max-content; color:white; border-radius: 0;outline: none;box-shadow: none;font-weight: bold;">
                
             </Button>
+            <span v-if="index < categories.length-1"> <b>| </b></span>
+
+        </div> -->
+        
+
+        <div v-for="(section,index) in cart?.menu?.listaCategorias?.filter(c => codigos.includes(parseInt(c.categoria_id) ))" :key="section.categoria_id" class="p-0"  style="display: flex; align-items: center;">
+
+     
+            <Button    size="small" @click="navigateToCategory(section.categoria_descripcion,section.categoria_id)" :label="section.categoria_descripcion "
+                :class="checkSelected(section.categoria_id) ? 'selected menu-button' : 'menu-button'"
+                class="py-3 px-3 mx-0  text-lg titulo" style=" text-transform: capitalize;width:max-content;text-transform: uppercase; color:black; border-radius: 0;outline: none;box-shadow: none;font-weight: bold;">
+               
+            </Button>
+            <span style="color: black;" v-if="index < cart?.menu?.listaCategorias?.filter(c => codigos.includes(parseInt(c.categoria_id))).length-1"> <b>| </b></span>
         </div>
     </div>
     </div>
@@ -33,7 +47,9 @@ import { ref, onMounted } from 'vue';
 import router from '@/router/index.js';
 import { useRoute } from 'vue-router';
 import { categoriesService } from '../service/restaurant/categoriesService'
+import { usecartStore } from '../store/shoping_cart';
 
+const cart = usecartStore()
 
 
 const categories = ref([]);
@@ -53,7 +69,12 @@ const checkSelected = (section) => {
     return route.params.category_id == section; // Verifica si el path actual contiene la cadena section
 };
 
-
+const codigos = [
+    5,
+    22,
+    18,
+    4
+]
 
 </script>
 
@@ -89,6 +110,7 @@ const checkSelected = (section) => {
 .menu-button:hover {
 
     cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.186);
 
 
 }
@@ -116,15 +138,19 @@ const checkSelected = (section) => {
 .selected {
     /* box-shadow: 0 0.4rem var(--primary-color) !important;
      */
-     border-bottom: 3px none red !important;
+     /* border-bottom: 3px none red !important;  */
      margin-bottom: 0%;
      margin-top: 0;
+    
      padding: 0;
+     background-color: rgba(0, 0, 0, 1);
+     color: white !important;
      /* font-weight: bold; */
      
      /* padding-bottom: 3px; */
 
 }
+
 
 
 
@@ -136,8 +162,9 @@ const checkSelected = (section) => {
       width: 100%;
       font-weight: bold;
       height: 0;
-      border-bottom: .3rem solid var(--primary-color); /* Borde inferior */
+     
     }
+
 
 
 

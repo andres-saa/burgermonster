@@ -1,6 +1,6 @@
 <template>
     <div class="p-1 my-5 md:my-0 col-12">
-        <div style="position: sticky; top: 5rem;border-radius: 0.5rem; z-index: 1000;background-color: #ffffff;" class="col-12 p-3 p-shadow m-0  ">
+        <div style="position: sticky; top: 5rem;border-radius: 0.5rem; z-index: 1000;background-color: white;" class="col-12 p-3 p-shadow m-0  ">
 
             <h5> <b>Resumen</b> </h5>
 
@@ -8,16 +8,27 @@
 
             <div class="grid mb-0 pb-0" v-for="product in store.cart.products">
 
-                <div class="col-6  py-2 mb-1">
-                    <span>
-                        <span style="min-width: 3rem;"><b>{{ product.quantity }} </b> </span>
-                        {{ product.product.product_name }}
-                    </span>
+                <div class="col-6  py-2 mb-0 m-0">
+                    <h6 class="m-0">
+                        <span style="min-width: 3rem;width:100%1"><b>{{ product.quantity }} </b> </span>
+                        {{ product.product.productogeneral_descripcion }}
+                    </h6>
+
+
+
+                
+                   
+
+                    <h6 class="m-0 ml-3 " style="width:340px;" v-for="i in product.product.lista_productobase">
+                      -- <b>{{ parseInt( i.productocombo_cantidad * product.quantity) }}</b> <span style="font-weight: 400;">{{ i.producto_descripcion }}</span> 
+                        
+                        
+                    </h6>
                 </div>
                 <div class="col-6 my-0  text-right py-2">
-                    <span>
+                    <h6>
                         {{ formatoPesosColombianos(product.total_cost) }}
-                    </span>
+                    </h6>
                 </div>
 
             </div>
@@ -92,7 +103,7 @@
                 </div>
                 <div class="col-6 my-0  text-right py-0">
                     <!-- {{ siteStore.location }} -->
-                    <span style="color: var(--primary-color);" v-if="siteStore.location.neigborhood.delivery_price == 0"> <b>Recoger en local</b> </span>
+                    <span style="color: var(--primary-color);" v-if="siteStore.location.neigborhood.delivery_price == 0"> <b>{{route.path.includes('reservas')? 'Ir a la sede' : `Recoger en local`}}</b> </span>
                     <span v-else> <b>{{ formatoPesosColombianos(siteStore.location.neigborhood.delivery_price) }}</b></span>
                 </div>
                 <div class="col-6 my-0 py-0">
@@ -112,30 +123,44 @@
 
             <router-link to="/" v-if="route.path.includes('cart')">
                 <Button outlined icon="pi pi-shopping-cart" label="Seguir comprando" class="mt-4" severity="danger"
-                    style="outline: none;width: 100%;color: white; font-weight: bold; background-color: #ffffff40"></Button>
+                    style="outline: none;width: 100%;font-weight: bold; background-color: rgba(0, 0, 0, 0);"></Button>
 
             </router-link>
 
-            <router-link to="/cart" v-else>
+            <router-link to="/cart" v-else-if="route.path != '/reservas'">
                 <Button outlined icon="pi pi-arrow-left" label="Volver al carrito" class="mt-4" severity="danger"
-                style="outline: none;width: 100%;color: white; font-weight: bold; background-color: #ffffff40"></Button>
+                    style="outline: none;width: 100%;font-weight: bold; background-color: rgba(0, 0, 0, 0);"></Button>
 
             </router-link>
 
 
-            <router-link to="/pay" v-if="route.path.includes('cart')">
+
+            <Tag  v-if="siteStore.status == 'cerrado' && route.path != '/reservas'" style="width: 100%;height: 2.5rem;" class="mt-2" severity="danger"> Este Restaurante esta cerrado</Tag>
+            <router-link to="/pay" v-if="route.path.includes('cart') && siteStore.status != 'cerrado' ">
                 <Button iconPos="right" icon="pi pi-arrow-right" label="Pedir" class="mt-2" severity="help"
                     style="outline: none;width: 100%; border: none;font-weight: bold; background-color: black;"></Button>
             </router-link>
 
-            <router-link to="/pay" v-else>
-                <Button :disabled="store.sending_order" @click=" ()  => {
+            <router-link to="/pay" v-else-if="route.path.includes('reservas')" >
+                <Button  @click=" ()  => {
+                    orderService.sendOrderReserva()
+                    sending = true
+                }" iconPos="right" icon="pi pi-arrow-right" label="Finalizar pedido"
+                    class="mt-2" severity="help"
+                    style="outline: none;width: 100%; border: none;font-weight: bold; background-color: black;"></Button>
+            </router-link>
+
+            <router-link to="/pay" v-else-if="siteStore.status != 'cerrado' " >
+                <Button  :disabled="store.sending_order || siteStore.status == 'cerrado'" @click=" ()  => {
                     orderService.sendOrder()
                     sending = true
                 }" iconPos="right" icon="pi pi-arrow-right" label="Finalizar pedido"
                     class="mt-2" severity="help"
                     style="outline: none;width: 100%; border: none;font-weight: bold; background-color: black;"></Button>
             </router-link>
+
+
+            
 
         </div>
 
@@ -158,12 +183,13 @@ import { useRoute } from 'vue-router';
 import { orderService } from '../../service/order/orderService';
 import {onMounted, ref, watch} from 'vue'
 import { useUserStore } from '../../store/user';
+
+
 const sending = ref(false)
 const route = useRoute()
 const store = usecartStore()
 const siteStore = useSitesStore()
 const user = useUserStore()
-
 
 
 
@@ -190,7 +216,7 @@ const update = () => {
 onMounted(() => {
     update()
 
-    if (user.user.payment_method_option?.id != 7)
+    if (user.user.payment_method_option?.id != 7 && !route.path.includes('reservas'))
         siteStore.setNeighborhoodPrice()
     else {
         siteStore.setNeighborhoodPriceCero()
@@ -220,7 +246,6 @@ button {
 * {
     text-transform: uppercase;
     font-size: 0.9rem;
-    color:rgb(0, 0, 0)
 }
 
 *::first-letter {
