@@ -54,7 +54,7 @@
 
 </div>
 
-            <resumen class="md:col-6"></resumen>
+            <resumen style="background-color: white;" class="md:col-6"></resumen>
 
           
 
