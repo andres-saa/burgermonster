@@ -36,7 +36,7 @@ const siteId = siteStore.location.site.site_id
 
 
   try {
-    const response = await fetch(`${URI}/site/${12}/status`);
+    const response = await fetch(`${URI}/site/${siteId}/status`);
     const data = await response.json();
     
     if (data.status === 'open') {
