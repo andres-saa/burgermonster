@@ -45,7 +45,7 @@
 <div class="flex flex-wrap align-items-center mb-2 gap-2" style="width: 100%;">
     <!-- <label for="username" class="p-sr-only">Username</label> -->
     <!-- <InputNumber v-model="user.user.payment_method_option" style="width: 100%;" id="username" placeholder="METODO DE PAGO" invalid /> -->
-    <Dropdown v-model="user.user.payment_method_option" style="width: 100%;" id="username" placeholder="METODO DE PAGO" invalid  :options="payment_method_options" optionLabel="name" ></Dropdown>
+    <Dropdown v-model="user.user.payment_method_option" style="width: 100%;" id="username" placeholder="METODO DE PAGO" invalid  :options="payment_method_options.filter(m => m.id != 7)" optionLabel="name" ></Dropdown>
 </div>
 
 <Textarea v-model="store.cart.order_notes"  style="height: 8rem;resize: none;" placeholder="NOTAS:"></Textarea>
